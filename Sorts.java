@@ -51,11 +51,7 @@ public class Sorts {
 
         int sortVal = 100/percentSort;
 
-        System.out.println("SORTVAL:: " + sortVal);
-        System.out.println("i LIMIT:: " + arr.length/sortVal);
-
         for (int i = 0; i < (arr.length/sortVal)/2; i++) {
-            System.out.println("Swapping " + arr[i] + ", " + arr[((arr.length/sortVal) - 1) - i]);
             int temp = arr[i];
             arr[i] = arr[((arr.length/sortVal) - 1) - i];
             arr[((arr.length/sortVal) - 1) - i] = temp;
