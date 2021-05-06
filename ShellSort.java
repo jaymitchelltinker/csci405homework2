@@ -11,7 +11,7 @@ public class ShellSort
     // }
   
     /* function to sort arr using shellSort */
-    int sort(int arr[])
+    public int sort(int arr[])
     {
         int n = arr.length;
   
