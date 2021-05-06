@@ -78,37 +78,37 @@ public class ShannonSort {
         }
         return arr;
 	}
-    //Print the current array as if it were a 2d aray [heigh][gap]. Used for debugging
-    private static void printGapArr(int [] arr,int gap){
-        int height;
-        int row = gap;
-        if(arr.length % gap == 0){
-            height = arr.length / gap;
-        }
-        else{
-            height = (arr.length / gap) + 1;
-        }
-        for(int i = 0; i < height; i++){
-            if(i == height - 1){
-                row = arr.length - (i * gap);
-            }
-            for(int j = 0; j < row; j++){
-                if(j+(i*gap) > arr.length + 1){
-                    continue;
-                }
-                System.out.print(arr[j+(i*gap)]+ "\t");
-            }
-            System.out.println();
-        }
-    }
+    // //Print the current array as if it were a 2d aray [heigh][gap]. Used for debugging
+    // private static void printGapArr(int [] arr,int gap){
+    //     int height;
+    //     int row = gap;
+    //     if(arr.length % gap == 0){
+    //         height = arr.length / gap;
+    //     }
+    //     else{
+    //         height = (arr.length / gap) + 1;
+    //     }
+    //     for(int i = 0; i < height; i++){
+    //         if(i == height - 1){
+    //             row = arr.length - (i * gap);
+    //         }
+    //         for(int j = 0; j < row; j++){
+    //             if(j+(i*gap) > arr.length + 1){
+    //                 continue;
+    //             }
+    //             System.out.print(arr[j+(i*gap)]+ "\t");
+    //         }
+    //         System.out.println();
+    //     }
+    // }
         
-    public static void main(String[] args) {
-        int[] input = {6,13,22,31,2,7,12,3,55,67,-22,-17,30,-40, 19,6,22,45,61,31,53,35,1,18,2,23,78,51,2,66,23,9,5,100,20};
-        //ShannonSort input
-        int[] output = Shannon(input);
-        //Display output
-        for(int i = 0; i< output.length; i++){
-            System.out.print(output[i]+ "  " );
-        }
-    }
+    // public static void main(String[] args) {
+    //     int[] input = {6,13,22,31,2,7,12,3,55,67,22,17,30,40, 19,6,22,45,61,31,53,35,1,18,2,23,78,51,2,66,23,9,5,100,20};
+    //     //ShannonSort input
+    //     int[] output = Shannon(input);
+    //     //Display output
+    //     for(int i = 0; i< output.length; i++){
+    //         System.out.print(output[i]+ "  " );
+    //     }
+    // }
 }
