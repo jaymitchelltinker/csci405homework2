@@ -1,9 +1,4 @@
 import java.util.Random;
-// import java.util.Math;
-
-// import ShellSort;
-// import ShannonSort;
-// import InsersionSort;
 
 public class Sorts {
     
@@ -64,6 +59,16 @@ public class Sorts {
         // reverseArray(myArr, 20);
         unsortArray(myArr, 50);
 
+        for (int i = 0; i < myArr.length; i++) {
+            System.out.print(myArr[i] + " ");
+        }
+
+        System.out.println();
+
+        ShannonSort.Shannon(myArr);
+
+        System.out.println("AFTER SORT: ");
+        
         for (int i = 0; i < myArr.length; i++) {
             System.out.print(myArr[i] + " ");
         }
