@@ -103,7 +103,7 @@ public class ShannonSort {
     }
         
     public static void main(String[] args) {
-        int[] input = {6,13,22,31,2,7,12,3,55,67,22,17,30,40, 19,6,22,45,61,31,53,35,1,18,2,23,78,51,2,66,23,9,5,100,20};
+        int[] input = {6,13,22,31,2,7,12,3,55,67,-22,-17,30,-40, 19,6,22,45,61,31,53,35,1,18,2,23,78,51,2,66,23,9,5,100,20};
         //ShannonSort input
         int[] output = Shannon(input);
         //Display output

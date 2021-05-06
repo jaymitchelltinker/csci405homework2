@@ -46,7 +46,7 @@ class ShellSort
     // Driver method
     public static void main(String args[])
     {
-        int arr[] = {12, 34, 54, 2, 3};
+        int arr[] = {-12, 34, -54, 2, 3};
         System.out.println("Array before sorting");
         printArray(arr);
   
