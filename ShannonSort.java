@@ -5,6 +5,10 @@
 public class ShannonSort {
 
     public static int[] Shannon(int[] arr){
+        
+        // comp and assignment array
+        int[] cmpasn = {0,0};
+
         //Initialize gap_sequence, original gap, starting index, and finishing index
         int gap_increase = 10;
         int gap = 10;
@@ -14,13 +18,13 @@ public class ShannonSort {
         int height = 0;
         int gaps = 0;
         if(arr.length % gap == 0){
-            gaps = arr.length / gap;
+            gaps = arr.length / gap; 
         }
         else{
             gaps = (arr.length / gap) + 1;
         }
          //Loop through every gap size
-        for(int i = 0; i < gaps; i++){ 
+        for(int i = 0; i < gaps; i++){
             //Calculate 'height' of the imaginary 2d arry at each gap
             height = 0;
             if(arr.length % gap == 0){
@@ -31,9 +35,9 @@ public class ShannonSort {
             }
          
             //Loop through the entire array with the current gap size
-            for(int j = 0; j < height; j++){ 
+            for(int j = 0; j < height; j++){
                 //sort the gap with insertion sort
-                arr = insertionGapSort(arr, start, finish);
+                arr = insertionGapSort(arr, start, finish, cmpasn);
                 //move to next gap
                 start += gap;
                 finish += gap;    
@@ -42,12 +46,8 @@ public class ShannonSort {
             //printGapArr(arr, gap);
             //System.out.println("\n");
 
-            //Increase gap size
-            
-            // post change: using the Knuth sequence, multiplying the gap size
-            // by 3 before incrementing to drecrease run time and gap
-            // comparisons
-            gap += gap * 3 + gap_increase;
+            // Increase gap size
+            gap += + gap_increase;
 
             //If gap size exceeds array size, set gap to the whole array
             if(gap > arr.length){
@@ -57,10 +57,12 @@ public class ShannonSort {
             start = 0;
             finish = gap;
         }
+        
+        System.out.println("COMPs= " + cmpasn[0] + "\nASSNG= " + cmpasn[1]);
         return arr;
     }
     //Sorts a gap (start -> finish) using insertion sort
-    public static int[] insertionGapSort(int[] arr, int start, int finish){
+    public static int[] insertionGapSort(int[] arr, int start, int finish, int[] cmpasn){
         //Ensure that gap does not try to access past array bounds
         if(finish > arr.length){
             finish = arr.length;
@@ -70,11 +72,14 @@ public class ShannonSort {
             int key = arr[i];
             int j = i - 1;
  
-            while (j >= start && arr[j] > key) {
-                arr[j + 1] = arr[j];
+            while (j >= start && arr[j] > key) { // comp
+                cmpasn[0]++;
+                arr[j + 1] = arr[j]; // assign
+                cmpasn[1]++;
                 j = j - 1;
             }
-            arr[j + 1] = key;
+            arr[j + 1] = key; // assign
+            cmpasn[1]++;
         }
         return arr;
 	}
@@ -106,9 +111,10 @@ public class ShannonSort {
     //     int[] input = {6,13,22,31,2,7,12,3,55,67,22,17,30,40, 19,6,22,45,61,31,53,35,1,18,2,23,78,51,2,66,23,9,5,100,20};
     //     //ShannonSort input
     //     int[] output = Shannon(input);
-    //     //Display output
+    //     // Display output
     //     for(int i = 0; i< output.length; i++){
     //         System.out.print(output[i]+ "  " );
     //     }
+    //     System.out.println();
     // }
 }

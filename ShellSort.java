@@ -13,6 +13,9 @@ public class ShellSort
     /* function to sort arr using shellSort */
     public int sort(int arr[])
     {
+        int comparisons = 0;
+        int assignments = 0;
+
         int n = arr.length;
   
         // Start with a big gap, then reduce the gap
@@ -32,14 +35,20 @@ public class ShellSort
                 // shift earlier gap-sorted elements up until
                 // the correct location for a[i] is found
                 int j;
-                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
-                    arr[j] = arr[j - gap];
+                for (j = i; j >= gap && arr[j - gap] > temp; j -= gap) { // 2 comps
+                    comparisons+=2;
+                    arr[j] = arr[j - gap]; // assign
+                    assignments++;
+                }
   
                 // put temp (the original a[i]) in its correct
                 // location
-                arr[j] = temp;
+                arr[j] = temp; // assign
+                assignments++;
             }
         }
+
+        System.out.println("COMPS= " + comparisons + "\nASSNG= " + assignments);
         return 0;
     }
   
