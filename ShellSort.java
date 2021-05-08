@@ -40,7 +40,9 @@ public class ShellSort
                     arr[j] = arr[j - gap]; // assign
                     assignments++;
                 }
-  
+                
+                comparisons+=2;
+                
                 // put temp (the original a[i]) in its correct
                 // location
                 arr[j] = temp; // assign

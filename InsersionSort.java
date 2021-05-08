@@ -20,6 +20,7 @@ class InsertionSort {
                 assignments++;
                 j = j - 1;
             }
+            comparisons++;
             arr[j + 1] = key; // assignment
             assignments++;
         }
@@ -37,18 +38,14 @@ class InsertionSort {
         System.out.println();
     }
  
-
-    static void addOne(Integer i) {
-        i = i+1;
-    }
     // Driver method
-    public static void main(String args[])
-    {
-        int arr[] = { 12, 11, 13, 5, 6 };
+    // public static void main(String args[])
+    // {
+    //     int arr[] = { 12, 11, 13, 5, 6 };
  
-        InsertionSort ob = new InsertionSort();
-        ob.sort(arr);
+    //     InsertionSort ob = new InsertionSort();
+    //     ob.sort(arr);
  
-        printArray(arr);
-    }
+    //     printArray(arr);
+    // }
 } /* This code is contributed by Rajat Mishra. */

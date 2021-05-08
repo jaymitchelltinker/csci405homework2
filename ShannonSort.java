@@ -78,6 +78,7 @@ public class ShannonSort {
                 cmpasn[1]++;
                 j = j - 1;
             }
+            cmpasn[0]++;
             arr[j + 1] = key; // assign
             cmpasn[1]++;
         }
