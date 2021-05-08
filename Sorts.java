@@ -59,7 +59,7 @@ public class Sorts {
     }
 
     public static void main(String args[]) {
-        int[] myArr = createArray(15);
+        int[] myArr = createArray(100);
 
         // reverseArray(myArr, 20);
         unsortArray(myArr, 50);
@@ -69,5 +69,21 @@ public class Sorts {
         }
 
         System.out.println();
+
+
+        /* Processor time
+         *
+         * need to keep track of processor time at the beginning and the
+         * end of the sorting algorithms to see how much time is spent on each
+         * we can include a graph consisting of the processor-time/comps/assgns
+         * so grab processor time at the beginning and then processor time at
+         * the end.
+         */
+
+        long start = System.nanoTime(); // begin the sort now
+
+        long end = System.nanoTime() - start; // after finishing the sort
+
+        System.out.println(end);
     }
 }
