@@ -1,9 +1,4 @@
 import java.util.Random;
-// import java.util.Math;
-
-// import ShellSort;
-// import ShannonSort;
-// import InsersionSort;
 
 public class Sorts {
     
@@ -70,6 +65,7 @@ public class Sorts {
 
         System.out.println();
 
+<<<<<<< HEAD
 
         /* Processor time
          *
@@ -85,5 +81,16 @@ public class Sorts {
         long end = System.nanoTime() - start; // after finishing the sort
 
         System.out.println(end);
+=======
+        ShannonSort.Shannon(myArr);
+
+        System.out.println("AFTER SORT: ");
+        
+        for (int i = 0; i < myArr.length; i++) {
+            System.out.print(myArr[i] + " ");
+        }
+
+        System.out.println();
+>>>>>>> a5f932e6d1cfad360b4f93cb17ec61ea4ac28495
     }
 }
