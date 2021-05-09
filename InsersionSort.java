@@ -1,51 +1,25 @@
 // Java program for implementation of Insertion Sort
 class InsertionSort {
     /*Function to sort array using insertion sort*/
-    public static void sort(int arr[])
-    {
-        Integer comparisons = 0;
-        Integer assignments = 0;
-
-        int n = arr.length;
-        for (int i = 1; i < n; ++i) {
-            int key = arr[i];
+    public static int[] insertionSort(int[] input) {
+        int[] cmpassn = {0,0};
+        for (int i = 1; i < input.length; i++) { 
+            int key = input[i]; 
             int j = i - 1;
- 
-            /* Move elements of arr[0..i-1], that are
-               greater than key, to one position ahead
-               of their current position */
-            while (j >= 0 && arr[j] > key) { // comp
-                comparisons++;
-                arr[j + 1] = arr[j]; // assignment
-                assignments++;
+            while (j >= 0 && input[j] > key) { // comparison
+                cmpassn[0]++;
+                input[j + 1] = input[j]; // assignment
+                cmpassn[1]++;
                 j = j - 1;
             }
-            comparisons++;
-            arr[j + 1] = key; // assignment
-            assignments++;
+            cmpassn[0]++;
+            cmpassn[1]++;
+            input[j + 1] = key;
         }
-        System.out.println("COMPS = " + comparisons);
-        System.out.println("ASSNG = " + assignments);
+
+        return cmpassn;
     }
  
-    /* A utility function to print array of size n*/
-    static void printArray(int arr[])
-    {
-        int n = arr.length;
-        for (int i = 0; i < n; ++i)
-            System.out.print(arr[i] + " ");
- 
-        System.out.println();
-    }
- 
-    // Driver method
-    // public static void main(String args[])
-    // {
-    //     int arr[] = { 12, 11, 13, 5, 6 };
- 
-    //     InsertionSort ob = new InsertionSort();
-    //     ob.sort(arr);
- 
-    //     printArray(arr);
-    // }
-} /* This code is contributed by Rajat Mishra. */
+}
+/*This code is contributed by Baeldung
+https://www.baeldung.com/java-insertion-sort */

@@ -58,8 +58,7 @@ public class ShannonSort {
             finish = gap;
         }
         
-        System.out.println("COMPs= " + cmpasn[0] + "\nASSNG= " + cmpasn[1]);
-        return arr;
+        return cmpasn;
     }
     //Sorts a gap (start -> finish) using insertion sort
     public static int[] insertionGapSort(int[] arr, int start, int finish, int[] cmpasn){
@@ -82,6 +81,7 @@ public class ShannonSort {
             arr[j + 1] = key; // assign
             cmpasn[1]++;
         }
+
         return arr;
 	}
     // //Print the current array as if it were a 2d aray [heigh][gap]. Used for debugging
