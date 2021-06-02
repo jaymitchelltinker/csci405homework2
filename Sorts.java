@@ -58,13 +58,15 @@ public class Sorts {
     }
     
     public static void main(String args[]) {
-        int arrSize = 1000;
-        String mode = "Reverse Sorted";
+        int arrSize = 3000;
+        String mode = "Random Sorted";
         int percentage = 100;
 
         int[] shannonDummy = new int[arrSize];
         int[] insertionDummy = new int[arrSize];
         int[] shellDummy = new int[arrSize];
+        int[] gnomeDummy = new int[arrSize];
+        int[] bubbleDummy = new int[arrSize];
         
         /* Processor time
         *
@@ -81,15 +83,21 @@ public class Sorts {
         long shannonTotalTime = 0;
         long insertionTotalTime = 0;
         long shellTotalTime = 0;
+        long gnomeTotalTime = 0;
+        long bubbleTotalTime = 0;
         
         int shannonComparisonCountTotal     = 0;
         int insertionComparisonCountTotal   = 0;
         int shellSortComparisonCountTotal   = 0;
+        int gnomeSortComparisonCountTotal   = 0;
+        int bubbleSortComparisonCountTotal  = 0;
         
         int shannonAssignmentCountTotal     = 0;
         int insertionAssignmentCountTotal   = 0;
         int shellSortAssignmentCountTotal   = 0;
-        
+        int gnomeSortAssignmentCountTotal   = 0;
+        int bubbleSortAssignmentCountTotal  = 0;
+
         /* run test 101 times
         *
         * the first time is to load classes and static blocks.
@@ -98,77 +106,113 @@ public class Sorts {
         for (int i = 0; i < 101; i++)
         {
             int[] myArr = createArray(arrSize);
-            reverseArray(myArr, percentage);
 
-            System.arraycopy(myArr, 0, shannonDummy, 0, arrSize);
-            System.arraycopy(myArr, 0, insertionDummy, 0, arrSize);
-            System.arraycopy(myArr, 0, shellDummy, 0, arrSize);
+            /** There are two methods in which arrays are modified: reverse
+             * and unsort.
+             * Unsort randomizes up to a specific percent.
+             * Reverse reverses an array up to a specific percent.
+             * 
+             * Use Unsort for randomized info.
+             * Use Reverse for worst case info.
+             */
+            unsortArray(myArr, percentage);
+
+            // System.arraycopy(myArr, 0, shannonDummy, 0, arrSize);
+            // System.arraycopy(myArr, 0, insertionDummy, 0, arrSize);
+            // System.arraycopy(myArr, 0, shellDummy, 0, arrSize);
+            System.arraycopy(myArr, 0, gnomeDummy, 0, arrSize);
+            System.arraycopy(myArr, 0, bubbleDummy, 0, arrSize);
+
+
+            // //shannon sort
+            // start = System.nanoTime(); // begin the sort now
+            // int[] shannonData = ShannonSort.Shannon(shannonDummy);
+            // end = System.nanoTime() - start; // after finishing the sort
+            // if (i != 0)
+            // {
+            //     shannonTotalTime += end;
+            //     shannonComparisonCountTotal += shannonData[0];
+            //     shannonAssignmentCountTotal += shannonData[1];
+            // }
             
-            //shannon sort
+            // //insertion sort
+            // start = System.nanoTime(); // begin the sort now
+            // int[] insertionData = InsertionSort.insertionSort(insertionDummy);
+            // end = System.nanoTime() - start; // after finishing the sort
+            // if (i != 0)
+            // {
+            //     insertionTotalTime += end;
+            //     insertionComparisonCountTotal += insertionData[0];
+            //     insertionAssignmentCountTotal += insertionData[1];
+            // }
+
+            // //shell sort
+            // start = System.nanoTime(); // begin the sort now
+            // int[] shellData = ShellSort.sort(shellDummy);
+            // end = System.nanoTime() - start; // after finishing the sort
+            // if (i != 0)
+            // {
+            //     shellTotalTime += end;
+            //     shellSortComparisonCountTotal += shellData[0];
+            //     shellSortAssignmentCountTotal += shellData[1];
+            // }
+
+            //gnome sort
             start = System.nanoTime(); // begin the sort now
-            int[] shannonData = ShannonSort.Shannon(shannonDummy);
+            int[] gnomeData = GnomeSort.gnomeSort(gnomeDummy, gnomeDummy.length);
             end = System.nanoTime() - start; // after finishing the sort
             if (i != 0)
             {
-                shannonTotalTime += end;
-                shannonComparisonCountTotal += shannonData[0];
-                shannonAssignmentCountTotal += shannonData[1];
+                gnomeTotalTime += end;
+                gnomeSortComparisonCountTotal += gnomeData[0];
+                gnomeSortAssignmentCountTotal += gnomeData[1];
             }
             
-            //insertion sort
+            //bubble sort
             start = System.nanoTime(); // begin the sort now
-            int[] insertionData = InsertionSort.insertionSort(insertionDummy);
+            int[] bubbleData = BubbleSort.bubbleSort(bubbleDummy);
             end = System.nanoTime() - start; // after finishing the sort
             if (i != 0)
             {
-                insertionTotalTime += end;
-                insertionComparisonCountTotal += insertionData[0];
-                insertionAssignmentCountTotal += insertionData[1];
-            }
-
-            //shell sort
-            start = System.nanoTime(); // begin the sort now
-            int[] shellData = ShellSort.sort(shellDummy);
-            end = System.nanoTime() - start; // after finishing the sort
-            if (i != 0)
-            {
-                shellTotalTime += end;
-                shellSortComparisonCountTotal += shellData[0];
-                shellSortAssignmentCountTotal += shellData[1];
+                bubbleTotalTime += end;
+                bubbleSortComparisonCountTotal += bubbleData[0];
+                bubbleSortAssignmentCountTotal += bubbleData[1];
             } 
         }
 
-        shannonComparisonCountTotal     = shannonComparisonCountTotal/100;
-        shannonAssignmentCountTotal     = shannonAssignmentCountTotal/100;
-        shannonTotalTime                = shannonTotalTime/100;
+        // shannonComparisonCountTotal     = shannonComparisonCountTotal/100;
+        // shannonAssignmentCountTotal     = shannonAssignmentCountTotal/100;
+        // shannonTotalTime                = shannonTotalTime/100;
         
-        insertionComparisonCountTotal   = insertionComparisonCountTotal/100;
-        insertionAssignmentCountTotal   = insertionAssignmentCountTotal/100;
-        insertionTotalTime              = insertionTotalTime/100;
+        // insertionComparisonCountTotal   = insertionComparisonCountTotal/100;
+        // insertionAssignmentCountTotal   = insertionAssignmentCountTotal/100;
+        // insertionTotalTime              = insertionTotalTime/100;
 
-        shellSortComparisonCountTotal   = shellSortComparisonCountTotal/100;
-        shellSortAssignmentCountTotal   = shellSortAssignmentCountTotal/100;
-        shellTotalTime                  = shellTotalTime/100;
+        // shellSortComparisonCountTotal   = shellSortComparisonCountTotal/100;
+        // shellSortAssignmentCountTotal   = shellSortAssignmentCountTotal/100;
+        // shellTotalTime                  = shellTotalTime/100;
+
+        gnomeSortComparisonCountTotal   = gnomeSortComparisonCountTotal/100;
+        gnomeSortAssignmentCountTotal   = gnomeSortAssignmentCountTotal/100;
+        gnomeTotalTime                  = gnomeTotalTime/100;
+
+        bubbleSortComparisonCountTotal   = bubbleSortComparisonCountTotal/100;
+        bubbleSortAssignmentCountTotal   = bubbleSortAssignmentCountTotal/100;
+        bubbleTotalTime                  = bubbleTotalTime/100;
         
         System.out.println("========== " + percentage + "% " + mode + " =================");
 
         System.out.println("======================================================");
-        System.out.println("Shannon Sort Stats:: ");
-        System.out.println("Comparisons:: " + shannonComparisonCountTotal);
-        System.out.println("Assignments:: " + shannonAssignmentCountTotal);
-        System.out.println("Average Time: " + shannonTotalTime);
+        System.out.println("gnome Sort Stats:: ");
+        System.out.println("Comparisons:: " + gnomeSortComparisonCountTotal);
+        System.out.println("Assignments:: " + gnomeSortAssignmentCountTotal);
+        System.out.println("Average Time: " + gnomeTotalTime);
         System.out.println("======================================================");
 
-        System.out.println("Insertion Sort Stats:: ");
-        System.out.println("Comparisons:: " + insertionComparisonCountTotal);
-        System.out.println("Assignments:: " + insertionAssignmentCountTotal);
-        System.out.println("Average Time: " + insertionTotalTime);
-        System.out.println("======================================================");
-
-        System.out.println("Shell Sort Sort Stats:: ");
-        System.out.println("Comparisons:: " + shellSortComparisonCountTotal);
-        System.out.println("Assignments:: " + shellSortAssignmentCountTotal);
-        System.out.println("Average Time: " + shellTotalTime);
+        System.out.println("bubble Sort Stats:: ");
+        System.out.println("Comparisons:: " + bubbleSortComparisonCountTotal);
+        System.out.println("Assignments:: " + bubbleSortAssignmentCountTotal);
+        System.out.println("Average Time: " + bubbleTotalTime);
         System.out.println("======================================================");
 
         // for (int i = 0; i < insertionDummy.length; i++)
